@@ -2,11 +2,22 @@
 set -e
 cd $(dirname $0)
 
+qemubin=qemu-system-x86_64
+mac=mac=52:54:00:12:34:56
+
+case "$1" in
+-i386)
+	qemubin=qemu-system-i386
+	mac=mac=52:54:00:12:34:57
+	shift
+	;;
+esac
+
 case "$#" in
 0)
 	;;
 *)
-	echo 'usage: boot/qemu' >&2
+	echo 'usage: boot/qemu [-i386]' >&2
 	exit 1
 esac
 
@@ -16,12 +27,11 @@ make -C ../sys/src/cmd/unix/u9fs
 u9fs="guestfwd=tcp:10.0.2.1:564-cmd:../sys/src/cmd/unix/u9fs/u9fs -a none -u $USER .."
 tftp='tftp=..'
 bootfile='bootfile=/386/9bootpxe'
-mac=mac=52:54:00:12:34:56
 
 kvmflag=
 test -w /dev/kvm && kvmflag=-enable-kvm
 
-qemu-system-x86_64 $kvmflag -m 1G -smp 1 -serial stdio \
+$qemubin $kvmflag -m 1G -smp 1 -serial stdio \
 	-display sdl -boot n \
 	-vga std \
 	-device virtio-net-pci,netdev=net0,$mac \

@@ -1,0 +1,10 @@
+bootfile=/386/9pc
+fs=10.0.2.1
+auth=10.0.2.1
+sysname=gnot
+nobootprompt=tcp
+user=glenda
+service=terminal
+console=0
+vgasize=ask
+monitor=ask
