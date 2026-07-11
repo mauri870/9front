@@ -33,7 +33,7 @@ test -w /dev/kvm && kvmflag=-enable-kvm
 
 $qemubin $kvmflag -m 1G -smp 1 -serial stdio \
 	-display sdl -boot n \
-	-vga std \
+	-device VGA,vgamem_mb=64 \
 	-device virtio-net-pci,netdev=net0,$mac \
 	-netdev "user,id=net0,$u9fs,$tftp,$bootfile" \
 	-usb -device usb-tablet
