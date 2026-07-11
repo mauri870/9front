@@ -1,0 +1,4 @@
+#!/bin/rc
+
+window 0,0,180,500 stats -lmisce
+window 180,0,400,120 faces
