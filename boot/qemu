@@ -31,7 +31,7 @@ bootfile='bootfile=/386/9bootpxe'
 kvmflag=
 test -w /dev/kvm && kvmflag=-enable-kvm
 
-$qemubin $kvmflag -m 1G -smp 1 -serial stdio \
+$qemubin $kvmflag -m 2G -cpu host -smp 4 -serial stdio \
 	-display sdl -boot n \
 	-device VGA,vgamem_mb=64 \
 	-device virtio-net-pci,netdev=net0,$mac \
