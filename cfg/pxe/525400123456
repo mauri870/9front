@@ -8,4 +8,3 @@ service=terminal
 console=0
 vgasize=ask
 monitor=ask
-*nomp=1
