@@ -6,5 +6,5 @@ nobootprompt=tcp
 user=glenda
 service=terminal
 console=0
-vgasize=ask
+vgasize=1920x1080x32
 monitor=ask
